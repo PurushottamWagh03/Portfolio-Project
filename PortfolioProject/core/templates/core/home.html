@@ -1,0 +1,54 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="max-w-5xl mx-auto bg-white text-black p-10 rounded-2xl">
+
+<div class="flex gap-8 items-center">
+
+{% if profile.profile_image %}
+<img src="{{ profile.profile_image.url }}"
+     class="w-40 h-40 rounded-full object-cover">
+{% endif %}
+
+<div>
+
+<h1 class="text-5xl font-bold">{{ profile.name }}</h1>
+
+<p class="text-xl mt-2">
+Django Backend Developer • REST APIs • Machine Learning
+</p>
+
+<p class="mt-3 text-gray-700">
+{{ profile.bio }}
+</p>
+
+<div class="flex gap-4 mt-4">
+
+<a href="https://github.com/PurushottamRameshWagh" target="_blank">
+<img src="{% static 'github.png' %}" width="35">
+</a>
+
+<a href="https://www.linkedin.com/in/purushottam-wagh" target="_blank">
+<img src="{% static 'linkedin.png' %}" width="35">
+</a>
+
+<a href="https://wa.me/919529371859" target="_blank">
+<img src="{% static 'whatsapp.png' %}" width="35">
+</a>
+
+<a href="mailto:puruw2003@gmail.com">
+<img src="{% static 'email.png' %}" width="35">
+</a>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+{% endblock %}
