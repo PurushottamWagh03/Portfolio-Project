@@ -35,3 +35,22 @@ def contact(request):
             })
 
     return render(request,"core/contact.html", {"form": form})
+
+def skills(request):
+    skills = {
+        "languages": ["Python", "Java", "Kotlin"],
+        "frameworks": ["Django", "HTML", "CSS", "XML"],
+        "tools": ["Machine Learning", "NLP", "REST APIs", "Pandas", "scikit-learn", "NLTK"],
+        "soft": ["Communication", "Leadership", "Problem Solving", "Critical Thinking"]
+    }
+    return render(request, "core/skills.html", {"skills": skills})
+
+def achievements(request):
+    achievements = [
+        "Java Programming Intermediate – Cipher School (July 2025)",
+        "ChatGPT-4 Prompt Engineering Certification (June 2025)",
+        "Privacy and Security on Social Media – NPTEL",
+        "Volunteer Certification – Stambh Organization",
+        "IT Voice Expo Technical Fest Participation (Jaipur)"
+    ]
+    return render(request, "core/achievements.html", {"achievements": achievements})

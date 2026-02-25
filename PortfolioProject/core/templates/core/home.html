@@ -1,54 +1,74 @@
-{% extends 'core/base.html' %}
+{% extends "core/base.html" %}
 {% load static %}
-
 {% block content %}
 
-<div class="max-w-5xl mx-auto bg-white text-black p-10 rounded-2xl">
+<div class="max-w-7xl mx-auto mt-12">
 
-<div class="flex gap-8 items-center">
+<div class="bg-white rounded-2xl shadow-xl p-12 flex flex-col md:flex-row justify-between items-center">
 
-{% if profile.profile_image %}
-<img src="{{ profile.profile_image.url }}"
-     class="w-40 h-40 rounded-full object-cover">
-{% endif %}
+    <!-- LEFT -->
+    <div class="md:w-1/2">
 
-<div>
+        <h1 class="text-6xl font-bold leading-tight">
+            Hi, I'm
+            <span class="text-blue-600">Purushottam Wagh</span>
+        </h1>
 
-<h1 class="text-5xl font-bold">{{ profile.name }}</h1>
+        <p class="text-xl text-gray-700 mt-6 leading-relaxed">
+            Backend Developer specializing in Django, REST APIs & Machine Learning.
+            Building scalable backend systems and intelligent applications.
+        </p>
 
-<p class="text-xl mt-2">
-Django Backend Developer • REST APIs • Machine Learning
-</p>
+        <!-- Buttons -->
+        <div class="flex gap-4 mt-8">
+            <a href="{% url 'projects' %}"
+               class="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700">
+               View Projects
+            </a>
 
-<p class="mt-3 text-gray-700">
-{{ profile.bio }}
-</p>
+            <a href="{% url 'contact' %}"
+               class="bg-slate-900 text-white px-6 py-3 rounded-xl font-semibold hover:bg-black">
+               Contact Me
+            </a>
 
-<div class="flex gap-4 mt-4">
+            <!-- Resume -->
+            <a href="/media/resume.pdf"
+               class="bg-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-green-700"
+               download>
+               Download CV
+            </a>
+        </div>
 
-<a href="https://github.com/PurushottamRameshWagh" target="_blank">
-<img src="{% static 'github.png' %}" width="35">
-</a>
+        <!-- SOCIAL ICONS (BOTTOM HORIZONTAL) -->
+        <div class="flex gap-6 mt-8 items-center">
 
-<a href="https://www.linkedin.com/in/purushottam-wagh" target="_blank">
-<img src="{% static 'linkedin.png' %}" width="35">
-</a>
+            <a href="https://github.com/PurushottamRameshWagh" target="_blank">
+                <img src="{% static 'images/github.png' %}" class="w-8 h-8 hover:scale-110 transition">
+            </a>
 
-<a href="https://wa.me/919529371859" target="_blank">
-<img src="{% static 'whatsapp.png' %}" width="35">
-</a>
+            <a href="https://www.linkedin.com/in/purushottam-wagh-2003/" target="_blank">
+                <img src="{% static 'images/linkedin.png' %}" class="w-8 h-8 hover:scale-110 transition">
+            </a>
 
-<a href="mailto:puruw2003@gmail.com">
-<img src="{% static 'email.png' %}" width="35">
-</a>
+            <a href="mailto:puruw2003@gmail.com">
+                <img src="{% static 'images/email.png' %}" class="w-8 h-8 hover:scale-110 transition">
+            </a>
+
+            <a href="https://wa.me/919529371859">
+                <img src="{% static 'images/whatsapp.png' %}" class="w-8 h-8 hover:scale-110 transition">
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="mt-10 md:mt-0">
+        <img src="{% static 'images/profile.jpg' %}"
+             class="w-80 h-80 rounded-full object-cover shadow-xl">
+    </div>
 
 </div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 
 {% endblock %}

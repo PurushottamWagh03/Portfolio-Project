@@ -1,33 +1,99 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Portfolio</title>
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+body{
+    transition: background 0.3s ease;
+}
+
+/* Themes */
+body.dark{
+    background:#020b4c;
+}
+body.light{
+    background:#f3f4f6;
+}
+body.grey{
+    background:#1f2937;
+}
+
+/* navbar */
+.navbar{
+    background:#1f2a44;
+}
+
+.nav-link{
+    color:white;
+    font-weight:600;
+    font-size:36px;
+    transition:0.2s;
+}
+.nav-link:hover{
+    color:#60a5fa;
+}
+
+</style>
 </head>
 
-<body class="bg-[#000b2d] text-white min-h-screen">
+<body class="dark">
 
-<nav class="bg-gray-800 px-6 py-3 flex gap-6">
+<!-- NAVBAR -->
+<nav class="navbar shadow-md px-6 py-4 flex justify-between items-center">
 
-    <a href="{% url 'home' %}">Home</a>
-    <a href="{% url 'about' %}">About</a>
-    <a href="{% url 'projects' %}">Projects</a>
-    <a href="{% url 'contact' %}">Contact</a>
+    <!-- LEFT MENU -->
+    <div class="flex gap-8">
 
-    <div class="ml-auto">
-        {% if user.is_authenticated %}
-            <a href="{% url 'logout' %}">Logout</a>
-        {% else %}
-            <a href="{% url 'login' %}">Login</a>
-        {% endif %}
+        <a href="{% url 'home' %}" class="nav-link">Home</a>
+        <a href="{% url 'about' %}" class="nav-link">About</a>
+        <a href="{% url 'projects' %}" class="nav-link">Projects</a>
+        <a href="{% url 'skills' %}" class="nav-link">Skills</a>
+        <a href="{% url 'achievements' %}" class="nav-link">Achievements</a>
+        <a href="{% url 'contact' %}" class="nav-link">Contact</a>
+
     </div>
+
+    <!-- THEME BUTTON -->
+    <button id="themeToggle"
+        class="bg-white text-black px-4 py-2 rounded-lg font-semibold shadow hover:bg-gray-200">
+        Theme
+    </button>
 
 </nav>
 
-<div class="p-6">
-    {% block content %}{% endblock %}
+
+<!-- PAGE CONTENT -->
+<div>
+    {% block content %}
+    {% endblock %}
 </div>
+
+
+<!-- THEME SCRIPT -->
+<script>
+
+const themes = ["dark","light","grey"];
+let themeIndex = 0;
+
+document.getElementById("themeToggle").onclick = function () {
+
+    document.body.classList.remove(...themes);
+
+    themeIndex = (themeIndex + 1) % themes.length;
+
+    document.body.classList.add(themes[themeIndex]);
+};
+
+</script>
 
 </body>
 </html>

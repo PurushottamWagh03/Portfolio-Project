@@ -1,20 +1,75 @@
-{% extends 'core/base.html' %}
-
+{% extends "core/base.html" %}
 {% block content %}
-
-<div class="max-w-xl mx-auto bg-white text-black p-8 rounded-xl">
-
-<h2 class="text-3xl font-bold mb-4">Contact</h2>
-
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-
-    <button class="bg-blue-600 text-white px-5 py-2 rounded mt-4">
-        Send
-    </button>
-</form>
-
+{% if success %}
+<div class="bg-green-100 text-green-800 p-3 rounded mb-4">
+    ✅ Email sent successfully!
 </div>
+{% endif %}
+<div style="
+max-width:900px;
+margin:60px auto;
+background:#fff;
+padding:50px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+">
+
+<h1 style="font-size:48px; margin-bottom:30px; color:#111;">
+Contact Me</h1>
+
+<form method="POST" class="space-y-5">
+    {% csrf_token %}
+
+    <div>
+        <label class="block text-black font-semibold mb-1">Name</label>
+        {{ form.name }}
+    </div>
+
+    <div>
+        <label class="block text-black font-semibold mb-1">Email</label>
+        {{ form.email }}
+    </div>
+
+    <div>
+        <label class="font-semibold">Message</label>
+<textarea name="message"
+    class="w-full p-3 border rounded-lg text-black bg-white"
+    rows="8"
+    placeholder="Enter your message..."></textarea>
+    </div>
+
+    <button type="submit"
+        class="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700">
+        Send Message
+    </button>
+
+</form>
+</div>
+
+<style>
+.input{
+width:100%;
+margin:12px 0 25px;
+padding:14px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:16px;
+}
+
+.btn-send{
+background:#2563eb;
+color:white;
+padding:12px 28px;
+border:none;
+border-radius:10px;
+font-size:18px;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn-send:hover{
+background:#1d4ed8;
+}
+</style>
 
 {% endblock %}

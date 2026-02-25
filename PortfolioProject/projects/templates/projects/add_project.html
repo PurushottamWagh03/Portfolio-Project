@@ -1,0 +1,84 @@
+{% extends "core/base.html" %}
+{% block content %}
+
+<div class="max-w-3xl mx-auto mt-10 mb-16 bg-white rounded-2xl shadow-lg p-10">
+
+    <h1 class="text-4xl font-bold mb-8 text-gray-900">
+        Add New Project
+    </h1>
+
+    <form method="POST" class="space-y-6">
+        {% csrf_token %}
+
+        <!-- TITLE -->
+        <div>
+            <label class="block mb-2 text-lg font-semibold text-gray-800">
+                Title
+            </label>
+            {{ form.title }}
+        </div>
+
+        <!-- DESCRIPTION -->
+        <div>
+            <label class="block mb-2 text-lg font-semibold text-gray-800">
+                Description
+            </label>
+            {{ form.description }}
+        </div>
+
+        <!-- TECH STACK -->
+        <div>
+            <label class="block mb-2 text-lg font-semibold text-gray-800">
+                Tech Stack
+            </label>
+            {{ form.tech_stack }}
+        </div>
+
+        <!-- GITHUB -->
+        <div>
+            <label class="block mb-2 text-lg font-semibold text-gray-800">
+                GitHub Link
+            </label>
+            {{ form.github_link }}
+        </div>
+
+        <!-- LIVE DEMO -->
+        <div>
+            <label class="block mb-2 text-lg font-semibold text-gray-800">
+                Live Demo
+            </label>
+            {{ form.live_demo }}
+        </div>
+
+        <button type="submit"
+            class="px-8 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition">
+            Save Project
+        </button>
+
+    </form>
+</div>
+
+<style>
+/* PROFESSIONAL INPUT DESIGN */
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #d1d5db;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #111827;
+    font-size: 16px;
+}
+
+input:focus, textarea:focus {
+    border-color: #2563eb;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37,99,235,.2);
+}
+
+textarea {
+    min-height: 140px;
+}
+</style>
+
+{% endblock %}

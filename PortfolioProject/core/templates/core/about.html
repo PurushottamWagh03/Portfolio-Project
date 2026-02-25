@@ -1,20 +1,78 @@
-{% extends 'core/base.html' %}
-
+{% extends "core/base.html" %}
 {% block content %}
 
-<div class="max-w-5xl mx-auto bg-white text-black p-10 rounded-2xl">
+<div class="max-w-6xl mx-auto mt-10 bg-white rounded-2xl shadow-lg p-10">
 
-<h1 class="text-5xl font-bold mb-8">About Me</h1>
+    <!-- Heading -->
+    <h1 class="text-5xl font-bold text-black mb-6">
+        About Me
+    </h1>
 
-<h2 class="text-3xl font-semibold">Professional Summary</h2>
-<p class="mt-2">
-Backend-focused Django Developer specializing in REST APIs and PostgreSQL.
-</p>
+    <!-- Intro -->
+    <p class="text-lg text-gray-700 leading-relaxed">
+        I am <span class="font-semibold text-blue-600">Purushottam Wagh</span>,
+        a backend-focused Django developer passionate about building scalable
+        web applications, REST APIs and machine learning powered solutions.
+    </p>
 
-<h2 class="text-3xl font-semibold mt-8">Education</h2>
-<p>B.Tech Computer Science Engineering</p>
-<p>Lovely Professional University (2021–2025)</p>
+    <!-- Highlight Box (UPDATED PROFESSIONAL LOOK) -->
+    <div class="about-highlight mt-6">
+        Backend Developer • Django • REST APIs • Machine Learning • PostgreSQL
+    </div>
+
+    <!-- Education -->
+    <div class="mt-8">
+        <h2 class="text-2xl font-bold mb-3 text-gray-900">🎓 Education</h2>
+        <p class="text-gray-700 leading-relaxed">
+            <span class="font-semibold">B.Tech Computer Science Engineering</span><br>
+            Lovely Professional University (2023 – Present)
+        </p>
+    </div>
+
+    <!-- Experience -->
+    <div class="mt-8">
+        <h2 class="text-2xl font-bold mb-3 text-gray-900">💼 Experience</h2>
+        <ul class="list-disc ml-6 text-gray-700 space-y-2">
+            <li>Built Django applications with REST APIs</li>
+            <li>Worked on ML-based recommendation systems</li>
+            <li>Integrated PostgreSQL with scalable backend logic</li>
+            <li>Designed clean backend architecture for maintainability</li>
+        </ul>
+    </div>
+
+    <!-- Highlights Cards -->
+    <div class="mt-10 grid md:grid-cols-3 gap-6">
+
+        <div class="bg-gray-100 hover:shadow-md transition p-5 rounded-xl">
+            <h3 class="font-bold text-xl mb-2 text-blue-700">Backend</h3>
+            <p class="text-gray-700">Django • REST APIs • PostgreSQL</p>
+        </div>
+
+        <div class="bg-gray-100 hover:shadow-md transition p-5 rounded-xl">
+            <h3 class="font-bold text-xl mb-2 text-blue-700">Machine Learning</h3>
+            <p class="text-gray-700">NLP • scikit-learn • Pandas</p>
+        </div>
+
+        <div class="bg-gray-100 hover:shadow-md transition p-5 rounded-xl">
+            <h3 class="font-bold text-xl mb-2 text-blue-700">Problem Solver</h3>
+            <p class="text-gray-700">Clean architecture + scalable systems</p>
+        </div>
+
+    </div>
 
 </div>
+
+<!-- STYLE -->
+<style>
+.about-highlight {
+    background: linear-gradient(90deg, #1e3a8a, #2563eb);
+    color: white;
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+</style>
 
 {% endblock %}

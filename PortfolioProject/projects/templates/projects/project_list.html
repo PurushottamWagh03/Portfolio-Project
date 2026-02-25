@@ -1,25 +1,57 @@
 {% extends "core/base.html" %}
+
 {% block content %}
 
-<div class="grid md:grid-cols-2 gap-6">
+<section class="max-w-7xl mx-auto py-12 px-6">
+<h1 class="text-5xl font-bold text-white mb-10">Projects</h1>
+
+<div class="grid md:grid-cols-2 gap-8">
 
 {% for project in projects %}
-<div class="bg-white text-gray-900 rounded-xl p-6 shadow">
+<div class="bg-gray-100 rounded-2xl shadow-lg p-8">
 
-<h2 class="text-2xl font-bold mb-2">{{ project.title }}</h2>
+<h3 style="color:#111827; font-size:32px; font-weight:700;">
+    {{ project.title }}
+</h3>
 
-<p class="text-gray-600 mb-4">
-{{ project.description|truncatewords:20 }}
+<p class="text-lg text-gray-800 mb-6">
+• {{ project.description|truncatechars:120 }}
 </p>
 
-<a href="{% url 'project_detail' project.slug %}"
-   class="bg-blue-600 text-white px-4 py-2 rounded">
-   View Details
-</a>
+<div class="flex gap-3 mt-4">
 
+    <!-- VIEW DETAILS BUTTON (FIXED) -->
+    <a href="{% url 'project_detail' project.slug %}"
+       class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-semibold transition">
+        View Details
+    </a>
+
+    <!-- EDIT BUTTON -->
+    <a href="/admin/projects/project/{{ project.id }}/change/"
+       class="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2 rounded-lg font-semibold transition">
+        Edit
+    </a>
+
+    <!-- DELETE BUTTON -->
+    <a href="/admin/projects/project/{{ project.id }}/delete/"
+       class="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg font-semibold transition">
+        Delete
+    </a>
+
+</div>
 </div>
 {% endfor %}
 
 </div>
+
+<!-- ADD PROJECT BUTTON (BOTTOM CENTER) -->
+<div class="text-center mt-10">
+    <a href="{% url 'add_project' %}"
+       class="bg-green-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-green-700">
+       + Add Project
+    </a>
+</div>
+</div>
+</section>
 
 {% endblock %}
