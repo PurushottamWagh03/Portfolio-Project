@@ -2,98 +2,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purushottam Wagh | Portfolio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;900&display=swap" rel="stylesheet">
 
-<title>Portfolio</title>
+    <!-- CSS Config & Styles -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: {
+                            DEFAULT: '#0a0a0a',
+                            surface: '#121212',
+                            border: '#1e1e1e',
+                        },
+                        brand: {
+                            cyan: '#06b6d4',
+                            indigo: '#6366f1',
+                            purple: '#a855f7'
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e5e7eb;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        /* Glassmorphism Utilities */
+        .glass-nav {
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15);
+            transform: translateY(-5px);
+        }
 
-<!-- Tailwind CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
+        /* Nav Link Hover Animation */
+        .nav-link {
+            position: relative;
+            color: #d1d5db; /* gray-300 */
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(90deg, #06b6d4, #6366f1);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        .nav-link:hover {
+            color: #ffffff;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
 
-<style>
+        /* Gradient Text Utility */
+        .text-gradient {
+            background: linear-gradient(135deg, #06b6d4 0%, #a855f7 50%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-body{
-    transition: background 0.3s ease;
-}
-
-/* Themes */
-body.dark{
-    background:#020b4c;
-}
-body.light{
-    background:#f3f4f6;
-}
-body.grey{
-    background:#1f2937;
-}
-
-/* navbar */
-.navbar{
-    background:#1f2a44;
-}
-
-.nav-link{
-    color:white;
-    font-weight:600;
-    font-size:36px;
-    transition:0.2s;
-}
-.nav-link:hover{
-    color:#60a5fa;
-}
-
-</style>
+        .ambient-glow {
+            position: fixed;
+            z-index: -1;
+            filter: blur(120px);
+            opacity: 0.15;
+            border-radius: 50%;
+        }
+    </style>
 </head>
+<body class="antialiased relative min-h-screen flex flex-col selection:bg-brand-indigo selection:text-white">
 
-<body class="dark">
+    <!-- Ambient Background Orbs -->
+    <div class="ambient-glow bg-brand-cyan w-[500px] h-[500px] top-[-10%] left-[-10%] animate-blob"></div>
+    <div class="ambient-glow bg-brand-purple w-[400px] h-[400px] bottom-[-10%] right-[-10%] animate-blob" style="animation-delay: 2s"></div>
+    <div class="ambient-glow bg-brand-indigo w-[600px] h-[600px] top-[30%] left-[50%] animate-blob" style="animation-delay: 4s"></div>
 
-<!-- NAVBAR -->
-<nav class="navbar shadow-md px-6 py-4 flex justify-between items-center">
+    <!-- NAVBAR -->
+    <nav class="glass-nav sticky top-0 z-50 px-6 py-4 flex justify-between items-center transition-all duration-300 w-full" id="navbar">
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
+            <!-- Logo / Brand -->
+            <a href="{% url 'home' %}" class="text-3xl font-bold font-heading text-white tracking-tight hover:scale-105 transition-transform duration-300">
+                PW<span class="text-brand-cyan">.</span>
+            </a>
 
-    <!-- LEFT MENU -->
-    <div class="flex gap-8">
+            <!-- Menu Links -->
+            <div class="hidden md:flex gap-8 items-center bg-black/40 px-8 py-3 rounded-full border border-white/5 shadow-lg">
+                <a href="{% url 'home' %}" class="nav-link">Home</a>
+                <a href="{% url 'about' %}" class="nav-link">About</a>
+                <a href="{% url 'projects' %}" class="nav-link">Projects</a>
+                <a href="{% url 'skills' %}" class="nav-link">Skills</a>
+                <a href="{% url 'achievements' %}" class="nav-link">Achievements</a>
+            </div>
 
-        <a href="{% url 'home' %}" class="nav-link">Home</a>
-        <a href="{% url 'about' %}" class="nav-link">About</a>
-        <a href="{% url 'projects' %}" class="nav-link">Projects</a>
-        <a href="{% url 'skills' %}" class="nav-link">Skills</a>
-        <a href="{% url 'achievements' %}" class="nav-link">Achievements</a>
-        <a href="{% url 'contact' %}" class="nav-link">Contact</a>
+            <!-- Contact CTA -->
+            <a href="{% url 'contact' %}" class="hidden md:inline-flex bg-white/10 hover:bg-white/20 border border-white/10 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 hover:shadow-[0_0_20px_rgba(99,102,241,0.3)]">
+                Let's Talk
+            </a>
 
-    </div>
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+    </nav>
 
-    <!-- THEME BUTTON -->
-    <button id="themeToggle"
-        class="bg-white text-black px-4 py-2 rounded-lg font-semibold shadow hover:bg-gray-200">
-        Theme
-    </button>
+    <!-- PAGE CONTENT -->
+    <main class="flex-grow z-10 relative mt-12 mb-20 px-4 w-full h-full">
+        {% block content %}
+        {% endblock %}
+    </main>
 
-</nav>
-
-
-<!-- PAGE CONTENT -->
-<div>
-    {% block content %}
-    {% endblock %}
-</div>
-
-
-<!-- THEME SCRIPT -->
-<script>
-
-const themes = ["dark","light","grey"];
-let themeIndex = 0;
-
-document.getElementById("themeToggle").onclick = function () {
-
-    document.body.classList.remove(...themes);
-
-    themeIndex = (themeIndex + 1) % themes.length;
-
-    document.body.classList.add(themes[themeIndex]);
-};
-
-</script>
+    <!-- FOOTER -->
+    <footer class="mt-auto py-8 border-t border-white/5 text-center text-gray-400 text-sm z-10 bg-black/60 backdrop-blur-md w-full">
+        <p class="font-medium tracking-wide">© 2025 Purushottam Wagh. Crafted with <span class="text-brand-cyan">Django</span>.</p>
+    </footer>
 
 </body>
 </html>

@@ -2,73 +2,87 @@
 {% load static %}
 {% block content %}
 
-<div class="max-w-7xl mx-auto mt-12">
+<!-- HERO SECTION -->
+<div class="max-w-7xl mx-auto min-h-[80vh] flex items-center justify-center relative">
+    
+    <!-- Decorative Blur Behind Hero -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[500px] bg-brand-indigo/10 blur-[120px] rounded-full z-[-1]"></div>
 
-<div class="bg-white rounded-2xl shadow-xl p-12 flex flex-col md:flex-row justify-between items-center">
+    <div class="glass-card rounded-[2.5rem] p-10 md:p-16 w-full flex flex-col md:flex-row justify-between items-center gap-12 relative overflow-hidden backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+        
+        <!-- Subtle Grid Background within Card -->
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 z-0 mix-blend-overlay"></div>
 
-    <!-- LEFT -->
-    <div class="md:w-1/2">
+        <!-- LEFT CONTENT -->
+        <div class="md:w-3/5 z-10 flex flex-col items-center md:items-start text-center md:text-left">
+            
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 mb-8 backdrop-blur-md">
+                <span class="relative flex h-3 w-3">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-cyan opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-cyan"></span>
+                </span>
+                <span class="text-sm font-medium tracking-wide text-gray-300">Available for Opportunities</span>
+            </div>
 
-        <h1 class="text-6xl font-bold leading-tight">
-            Hi, I'm
-            <span class="text-blue-600">Purushottam Wagh</span>
-        </h1>
+            <h1 class="text-5xl md:text-7xl font-bold font-heading leading-tight mb-6">
+                Hi, I'm <br class="hidden md:block"/>
+                <span class="text-gradient drop-shadow-lg">Purushottam Wagh</span>
+            </h1>
 
-        <p class="text-xl text-gray-700 mt-6 leading-relaxed">
-            Backend Developer specializing in Django, REST APIs & Machine Learning.
-            Building scalable backend systems and intelligent applications.
-        </p>
+            <p class="text-lg md:text-xl text-gray-400 leading-relaxed mb-10 max-w-2xl font-light">
+                Backend Developer specializing in <strong class="text-white font-medium">Django</strong>, <strong class="text-white font-medium">REST APIs</strong> & <strong class="text-white font-medium">Machine Learning</strong>.
+                Building scalable backend systems and intelligent applications that perform at scale.
+            </p>
 
-        <!-- Buttons -->
-        <div class="flex gap-4 mt-8">
-            <a href="{% url 'projects' %}"
-               class="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700">
-               View Projects
-            </a>
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                <a href="{% url 'projects' %}"
+                   class="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-300 bg-brand-indigo rounded-xl hover:bg-indigo-500 hover:shadow-[0_0_20px_rgba(99,102,241,0.5)] overflow-hidden">
+                   <span class="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
+                   <span class="relative">View Projects</span>
+                </a>
 
-            <a href="{% url 'contact' %}"
-               class="bg-slate-900 text-white px-6 py-3 rounded-xl font-semibold hover:bg-black">
-               Contact Me
-            </a>
+                <a href="{% url 'contact' %}"
+                   class="px-8 py-4 rounded-xl font-bold text-white bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 backdrop-blur-md">
+                   Get in Touch
+                </a>
 
-            <!-- Resume -->
-            <a href="/media/resume.pdf"
-               class="bg-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-green-700"
-               download>
-               Download CV
-            </a>
+                <a href="/media/resume.pdf"
+                   class="group flex items-center gap-2 px-6 py-4 rounded-xl font-bold text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 hover:bg-emerald-400/20 hover:shadow-[0_0_15px_rgba(52,211,153,0.3)] transition-all duration-300"
+                   download>
+                   <svg class="w-5 h-5 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                   CV
+                </a>
+            </div>
+
+            <!-- Social Links -->
+            <div class="flex gap-6 mt-12 items-center">
+                <a href="https://github.com/PurushottamRameshWagh" target="_blank" class="p-3 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 group">
+                    <img src="{% static 'images/github.png' %}" alt="GitHub" class="w-6 h-6 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                </a>
+                <a href="https://www.linkedin.com/in/purushottam-wagh-2003/" target="_blank" class="p-3 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 group">
+                    <img src="{% static 'images/linkedin.png' %}" alt="LinkedIn" class="w-6 h-6 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                </a>
+                <a href="mailto:puruw2003@gmail.com" class="p-3 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 group">
+                    <img src="{% static 'images/email.png' %}" alt="Email" class="w-6 h-6 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                </a>
+                <a href="https://wa.me/919529371859" class="p-3 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 group">
+                    <img src="{% static 'images/whatsapp.png' %}" alt="WhatsApp" class="w-6 h-6 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                </a>
+            </div>
+
         </div>
 
-        <!-- SOCIAL ICONS (BOTTOM HORIZONTAL) -->
-        <div class="flex gap-6 mt-8 items-center">
-
-            <a href="https://github.com/PurushottamRameshWagh" target="_blank">
-                <img src="{% static 'images/github.png' %}" class="w-8 h-8 hover:scale-110 transition">
-            </a>
-
-            <a href="https://www.linkedin.com/in/purushottam-wagh-2003/" target="_blank">
-                <img src="{% static 'images/linkedin.png' %}" class="w-8 h-8 hover:scale-110 transition">
-            </a>
-
-            <a href="mailto:puruw2003@gmail.com">
-                <img src="{% static 'images/email.png' %}" class="w-8 h-8 hover:scale-110 transition">
-            </a>
-
-            <a href="https://wa.me/919529371859">
-                <img src="{% static 'images/whatsapp.png' %}" class="w-8 h-8 hover:scale-110 transition">
-            </a>
-
+        <!-- RIGHT IMAGE (Floating Avatar) -->
+        <div class="md:w-2/5 z-10 relative flex justify-center animate-float hidden md:flex">
+            <div class="absolute inset-0 bg-gradient-to-tr from-brand-indigo to-brand-purple rounded-full blur-[60px] opacity-40"></div>
+            <div class="relative p-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm shadow-2xl">
+                <img src="{% static 'images/profile.jpg' %}"
+                     class="w-72 h-72 lg:w-80 lg:h-80 rounded-full object-cover border-4 border-black/50" alt="Purushottam Wagh">
+            </div>
         </div>
 
     </div>
-
-    <!-- RIGHT IMAGE -->
-    <div class="mt-10 md:mt-0">
-        <img src="{% static 'images/profile.jpg' %}"
-             class="w-80 h-80 rounded-full object-cover shadow-xl">
-    </div>
-
-</div>
 </div>
 
 {% endblock %}
