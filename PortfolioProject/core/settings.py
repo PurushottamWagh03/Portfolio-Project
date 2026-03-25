@@ -43,11 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'PortfolioProject.accounts',
-    'PortfolioProject.projects',
-    'PortfolioProject.contact',
-    'PortfolioProject.core',
-    'jazzmin',
+    'accounts',
+    'projects',
+    'contact',
+    'core',
+    "jazzmin",
 ]
 
 MIDDLEWARE = [
