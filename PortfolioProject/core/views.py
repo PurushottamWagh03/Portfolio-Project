@@ -145,3 +145,16 @@ def certificates(request):
         {"title": "Java with OOPs - Programming Language", "issuer": "CipherSchools", "date": "June 4, 2025 to July 15, 2025", "instructor": "Anurag Mishra", "duration": "70 hours", "image": "cert_cipher.png"}
     ]
     return render(request, "core/certificates.html", {"certificates": certs})
+
+def magic_load_data(request):
+    import sys
+    from io import StringIO
+    from django.core.management import call_command
+    from django.http import HttpResponse
+    
+    out = StringIO()
+    try:
+        call_command('loaddata', 'datadump.json', stdout=out, stderr=out)
+        return HttpResponse(f"<h1>SUCCESS</h1><pre>{out.getvalue()}</pre>")
+    except Exception as e:
+        return HttpResponse(f"<h1>ERROR</h1><p>{str(e)}</p><pre>{out.getvalue()}</pre>")
