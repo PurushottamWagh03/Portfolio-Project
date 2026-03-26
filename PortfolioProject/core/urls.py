@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 
-from .views import home, about, contact, skills, achievements, certificates
+from .views import home, about, contact, skills, achievements, certificates, magic_load_data
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -12,6 +12,7 @@ urlpatterns = [
     path('', home, name='home'),
     path('about/', about, name='about'),
     path('projects/', include('projects.urls')),
+    path('magic-load-data/', magic_load_data, name='magic_load_data'),
 
     path("contact/", contact, name="contact"),
     path("skills/", skills, name="skills"),
