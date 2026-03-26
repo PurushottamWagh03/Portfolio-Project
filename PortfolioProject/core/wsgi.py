@@ -15,13 +15,11 @@ application = get_wsgi_application()
 
 try:
     from django.core.management import call_command
-    from django.db import connection
-    tables = connection.introspection.table_names()
-    if 'core_profile' not in tables:
-        print("Running one-time Vercel Neon initialization...")
-        call_command('migrate', interactive=False)
+    from core.models import Profile
+    if not Profile.objects.exists():
+        print("Empty database detected, injecting pure UTF-8 data...")
         call_command('loaddata', 'datadump.json')
 except Exception as e:
-    print(f"Vercel auto-migrate failed: {e}")
+    print(f"Vercel data injection failed: {e}")
 
 app = application
