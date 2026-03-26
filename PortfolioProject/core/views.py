@@ -147,14 +147,17 @@ def certificates(request):
     return render(request, "core/certificates.html", {"certificates": certs})
 
 def magic_load_data(request):
-    import sys
-    from io import StringIO
-    from django.core.management import call_command
+    from django.contrib.auth.models import User
     from django.http import HttpResponse
     
-    out = StringIO()
+    out = ""
     try:
-        call_command('loaddata', 'datadump.json', stdout=out, stderr=out)
-        return HttpResponse(f"<h1>SUCCESS</h1><pre>{out.getvalue()}</pre>")
+        if not User.objects.filter(username='admin').exists():
+            User.objects.create_superuser('admin', 'admin@example.com', 'Admin@123')
+            out += "Superuser created! Username: admin | Password: Admin@123\n"
+        else:
+            out += "Superuser 'admin' already exists.\n"
+            
+        return HttpResponse(f"<h1>SUCCESS</h1><pre>{out}</pre>")
     except Exception as e:
-        return HttpResponse(f"<h1>ERROR</h1><p>{str(e)}</p><pre>{out.getvalue()}</pre>")
+        return HttpResponse(f"<h1>ERROR</h1><p>{str(e)}</p>")
